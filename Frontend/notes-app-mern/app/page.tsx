@@ -21,8 +21,8 @@ const page = () => {
         </div>
 
         {/* bottom button */}
-        <div className="flex flex-col h-full w-full justify-end items-end">
-          <button className="plus-btn bg-green-300 before:bg-green-600 shadow-lg shadow-gray-300 fixed">
+        <div className="absolute right-5 bottom-5">
+          <button className="plus-btn bg-green-300 before:bg-green-600 shadow-lg shadow-gray-300 fixed" title="Add new note">
             <FaPlus />
           </button>
         </div>
