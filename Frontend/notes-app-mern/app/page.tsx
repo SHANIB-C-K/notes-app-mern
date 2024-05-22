@@ -5,6 +5,11 @@ import "./page.css";
 import Card from "./components/Cards/Card";
 
 const page = () => {
+
+  const CreateFunction = () => {
+    
+  }
+
   return (
     <>
       <div className="h-screen w-screen flex flex-col bg-white text-black overflow-x-hidden gap-20">
@@ -22,7 +27,7 @@ const page = () => {
 
         {/* bottom button */}
         <div className="absolute right-5 bottom-5">
-          <button className="plus-btn bg-green-300 before:bg-green-600 shadow-lg shadow-gray-300 fixed" title="Add new note">
+          <button className="plus-btn bg-green-300 before:bg-green-600 shadow-lg shadow-gray-300 fixed" title="Add new note" onClick={CreateFunction}>
             <FaPlus />
           </button>
         </div>
