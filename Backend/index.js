@@ -47,6 +47,35 @@ app.get("/", (req, res) => {
     .catch((err) => res.json(err));
 });
 
+// register authentication
+
+const AuthSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+});
+
+const authentication = mongoose.model("authentication", AuthSchema);
+
+app.post("/register", async (req, res) => {
+  const { email, password } = req.body;
+  const findEmail = await authentication.findOne({ email });
+  if (findEmail) {
+    res.json("email already exist");
+  } else {
+    const authData = {
+      email: email,
+      password: password,
+    };
+    authentication.insertMany(authData);
+  }
+});
+
 app.listen(8000, (req, res) => {
   console.log(`Server is running at http://localhost:8000`);
 });
