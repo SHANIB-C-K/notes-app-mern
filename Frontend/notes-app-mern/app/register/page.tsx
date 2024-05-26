@@ -11,7 +11,7 @@ const Register = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  const HandleSubmit = async (e: any) => {
+  const HandleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     if (!email || !password) {
       setError("All fields are required");
@@ -99,7 +99,7 @@ const Register = () => {
                     <div className="relative">
                       <button
                         className="bg-cyan-500 text-white rounded-md px-2 py-1"
-                        onClick={HandleSubmit}
+                        onClick={(e) => HandleSubmit}
                       >
                         Submit
                       </button>
