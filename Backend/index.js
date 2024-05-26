@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 app.use(cors());
 app.use(express.json());
@@ -68,11 +69,29 @@ app.post("/register", async (req, res) => {
   if (findEmail) {
     res.json("email already exist");
   } else {
+    const encrypedPassword = await bcrypt.hash(password, 10);
     const authData = {
       email: email,
-      password: password,
+      password: encrypedPassword,
     };
     authentication.insertMany(authData);
+    res.json("registered successfully");
+  }
+});
+
+// login authentication
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const findEmail = await authentication.findOne({ email });
+  if (findEmail) {
+    const passwordMatch = await bcrypt.compare(password, findEmail.password);
+    if (passwordMatch) {
+      res.json("loged in");
+    } else {
+      res.json("password not match");
+    }
+  } else {
+    res.json("email not found");
   }
 });
 
