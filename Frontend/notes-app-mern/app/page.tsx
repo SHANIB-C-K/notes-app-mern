@@ -31,8 +31,7 @@ const page = () => {
   return (
     <>
       {loading ? (
-          <Loading />
-
+        <Loading />
       ) : (
         <div className="h-screen w-screen flex flex-col bg-white text-black overflow-x-hidden gap-20">
           <Navbar />

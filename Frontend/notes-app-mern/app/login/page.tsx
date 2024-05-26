@@ -11,7 +11,7 @@ const Login = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  const HandleSubmit = async (e: SubmitEvent) => {
+  const HandleSubmit = async (e: any) => {
     e.preventDefault();
     const res = await axios.post("http://localhost:8000/login", {
       email,
@@ -24,6 +24,7 @@ const Login = () => {
       setError("User not found");
     } else if (res.data == "loged in") {
       localStorage.setItem("login", "true");
+      localStorage.setItem("username", email);
       router.push("/");
     }
   };
@@ -99,7 +100,7 @@ const Login = () => {
                     <div className="relative">
                       <button
                         className="bg-cyan-500 text-white rounded-md px-2 py-1"
-                        onClick={(e) => HandleSubmit}
+                        onClick={HandleSubmit}
                       >
                         Submit
                       </button>
