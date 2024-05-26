@@ -8,7 +8,7 @@ const create = () => {
   const [paragraph, setParagraph] = useState("");
   const router = useRouter();
 
-  const HandleSubmit = (e: SubmitEvent) => {
+  const HandleSubmit = (e: any) => {
     e.preventDefault();
     console.log(title);
     console.log(paragraph);
@@ -68,7 +68,7 @@ const create = () => {
                   <div className="relative">
                     <button
                       className="bg-blue-500 text-white rounded-md px-2 py-1"
-                      onClick={(e) => HandleSubmit}
+                      onClick={HandleSubmit}
                     >
                       Submit
                     </button>

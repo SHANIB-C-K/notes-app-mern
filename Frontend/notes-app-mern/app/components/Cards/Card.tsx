@@ -22,7 +22,7 @@ const Card = () => {
           >
             <div className="bg-white p-7 rounded-md">
               <h1 className="font-bold text-xl mb-2">{title}</h1>
-              <p>{paragraph}</p>
+              <p className="overflow-hidden">{paragraph}</p>
             </div>
           </div>
         ))}
