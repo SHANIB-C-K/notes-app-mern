@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="h-20 w-full bg-white shadow-md flex items-center justify-between fixed">
         <h1 className="ml-10 text-2xl font-extrabold">Notes App</h1>
         <div className="flex gap-4">
-          <p>
+          <p className="sm:block hidden">
             Hello, <span className="font-bold">{username}</span>
           </p>
           <IoLogOut

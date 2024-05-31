@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const { ObjectId } = require("mongodb");
 
 app.use(cors());
 app.use(express.json());
@@ -95,6 +96,30 @@ app.post("/login", async (req, res) => {
   }
 });
 
+// update data
+app.put("/update/:id", async (req, res) => {
+  const { id, title, paragraph } = req.body;
+  const findId = await collection.findOne({ id });
+  if (findId) {
+    const updateData = {
+      title: title,
+      paragraph: paragraph,
+    };
+    collection.updateOne({ id }, { $set: updateData });
+    res.json("updated successfully");
+  } else {
+    res.json("email not found");
+  }
+});
+
+app.get("/update/:id", async (req, res) => {
+  const id = req.params.id;
+
+  const result = await collection.findOne({ _id: new ObjectId(id) });
+  if (result) {
+    res.json(result)
+  }
+});
 app.listen(8000, (req, res) => {
   console.log(`Server is running at http://localhost:8000`);
 });
