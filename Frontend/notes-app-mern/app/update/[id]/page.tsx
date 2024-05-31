@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter,useParams } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
 const Update = () => {
   const { id } = useParams();
@@ -11,27 +11,20 @@ const Update = () => {
 
   const HandleSubmit = async (e: any) => {
     e.preventDefault();
-    try {
-      const res = await axios.put(`http://localhost:3000/api/posts/${id}`, {
-        title,
-        paragraph,
-      });
-      if (res.data == "updated successfully") {
-        setTitle(res.data.title);
-        setParagraph(res.data.paragraph);
-      }
+    const response = await axios.put("http://localhost:8000/update/" + id, {
+      title,
+      paragraph,
+    });
+    if (response.data == "updated successfully") {
       router.push("/");
-    } catch (error) {
-      console.log(error);
     }
   };
 
   //   update data
   useEffect(() => {
-    axios.get("http://localhost:8000/update/" + id).then((res) => {
+    axios.get("http://localhost:8000/updateUser/" + id).then((res) => {
       // setTitle(res.data);
       setTitle(res.data.title);
-
       setParagraph(res.data.paragraph);
     });
   }, []);

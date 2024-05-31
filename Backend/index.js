@@ -98,26 +98,26 @@ app.post("/login", async (req, res) => {
 
 // update data
 app.put("/update/:id", async (req, res) => {
-  const { id, title, paragraph } = req.body;
-  const findId = await collection.findOne({ id });
+  const id = req.params.id;
+  const filterId = { _id: new ObjectId(id) };
+  const findId = await collection.findOne(filterId);
   if (findId) {
     const updateData = {
-      title: title,
-      paragraph: paragraph,
+      $set: { title: req.body.title, paragraph: req.body.paragraph },
     };
-    collection.updateOne({ id }, { $set: updateData });
+    await collection.updateOne(filterId, updateData);
     res.json("updated successfully");
   } else {
-    res.json("email not found");
+    res.json("id not found");
   }
 });
 
-app.get("/update/:id", async (req, res) => {
+app.get("/updateUser/:id", async (req, res) => {
   const id = req.params.id;
 
   const result = await collection.findOne({ _id: new ObjectId(id) });
   if (result) {
-    res.json(result)
+    res.json(result);
   }
 });
 app.listen(8000, (req, res) => {
