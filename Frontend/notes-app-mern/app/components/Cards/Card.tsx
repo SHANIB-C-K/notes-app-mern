@@ -18,7 +18,7 @@ const Card = () => {
   const HandleDelete = async (_id: any) => {
     const response = await axios.delete("http://localhost:8000/delete/" + _id);
     if (response.data === "Deleted successfully") {
-      router.push("/login");
+      router.push("/deleting");
     }
   };
 

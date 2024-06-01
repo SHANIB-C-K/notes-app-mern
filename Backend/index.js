@@ -124,7 +124,6 @@ app.get("/updateUser/:id", async (req, res) => {
 // delete function
 app.delete("/delete/:id", async (req, res) => {
   const { _id } = req.body;
-  console.log(_id);
   await collection.deleteOne(_id);
   res.json("Deleted successfully");
 });
