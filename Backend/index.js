@@ -120,6 +120,15 @@ app.get("/updateUser/:id", async (req, res) => {
     res.json(result);
   }
 });
+
+// delete function
+app.delete("/delete/:id", async (req, res) => {
+  const { _id } = req.body;
+  console.log(_id);
+  await collection.deleteOne(_id);
+  res.json("Deleted successfully");
+});
+
 app.listen(8000, (req, res) => {
   console.log(`Server is running at http://localhost:8000`);
 });
