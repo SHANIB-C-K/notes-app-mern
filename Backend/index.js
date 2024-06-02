@@ -27,16 +27,21 @@ const dataSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  username: {
+    type: String,
+    required: true,
+  },
 });
 
 const collection = mongoose.model("collection", dataSchema);
 
 //create user section
 app.post("/create", (req, res) => {
-  const { title, paragraph } = req.body;
+  const { title, paragraph, username } = req.body;
   const data = {
     title: title,
     paragraph: paragraph,
+    username: username,
   };
   collection.insertMany([data]);
 });
@@ -123,9 +128,15 @@ app.get("/updateUser/:id", async (req, res) => {
 
 // delete function
 app.delete("/delete/:id", async (req, res) => {
-  const { _id } = req.body;
-  await collection.deleteOne(_id);
-  res.json("Deleted successfully");
+  const id = req.params.id;
+  const filterId = { _id: new ObjectId(id) };
+  const findId = await collection.findOne(filterId);
+  if (findId) {
+    await collection.deleteOne(filterId);
+    res.json("deleted successfully");
+    } else {
+      res.json("id not found");
+      }
 });
 
 app.listen(8000, (req, res) => {

@@ -12,9 +12,11 @@ const create = () => {
     e.preventDefault();
     console.log(title);
     console.log(paragraph);
+    const username = localStorage.getItem("username");
     axios.post("http://localhost:8000/create/", {
       title: title,
       paragraph: paragraph,
+      username: username,
     });
     router.push("/");
   };

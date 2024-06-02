@@ -9,15 +9,21 @@ const Card = () => {
   const router = useRouter();
 
   useEffect(() => {
+    const username = localStorage.getItem("username");
     axios
       .get("http://localhost:8000/")
-      .then((result) => setDatas(result.data))
+      .then((result) => {
+        const data = result.data.filter(
+          (item: any) => item.username === username
+        );
+        setDatas(data);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   const HandleDelete = async (_id: any) => {
     const response = await axios.delete("http://localhost:8000/delete/" + _id);
-    if (response.data === "Deleted successfully") {
+    if (response.data === "deleted successfully") {
       router.push("/deleting");
     }
   };
