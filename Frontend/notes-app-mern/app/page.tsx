@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar/page";
 import { FaPlus } from "react-icons/fa";
 import "./page.css";
-import Card from "./components/Cards/page";
+import Card from "./components/Cards/Card";
 import { useRouter } from "next/navigation";
 import Loading from "./components/loading/page";
 
