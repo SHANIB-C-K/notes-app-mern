@@ -134,9 +134,9 @@ app.delete("/delete/:id", async (req, res) => {
   if (findId) {
     await collection.deleteOne(filterId);
     res.json("deleted successfully");
-    } else {
-      res.json("id not found");
-      }
+  } else {
+    res.json("id not found");
+  }
 });
 
 app.listen(8000, (req, res) => {

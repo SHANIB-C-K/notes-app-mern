@@ -9,7 +9,7 @@ const Navbar = () => {
   const LogoutFunction = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("login");
-    window.location.reload();
+    router.push("/register");
   };
 
   return (
