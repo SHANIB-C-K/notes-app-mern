@@ -49,6 +49,7 @@ const Update = () => {
                       type="text"
                       className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                       placeholder="Title"
+                      value={title}
                       onChange={(e) => setTitle(e.target.value)}
                     />
                     <label
@@ -65,6 +66,7 @@ const Update = () => {
                       name="paragraph"
                       className="peer placeholder-transparent h-24 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 resize-none"
                       placeholder="paragraph"
+                      value={paragraph}
                       onChange={(e) => setParagraph(e.target.value)}
                     />
                     <label

@@ -119,7 +119,6 @@ app.put("/update/:id", async (req, res) => {
 
 app.get("/updateUser/:id", async (req, res) => {
   const id = req.params.id;
-
   const result = await collection.findOne({ _id: new ObjectId(id) });
   if (result) {
     res.json(result);
