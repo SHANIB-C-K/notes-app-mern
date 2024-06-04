@@ -1,3 +1,3 @@
 # Notes App Mern
 
-This web app is launch tomarrow, today i fix all the bugs
+ The work of this project has been done. I am in the hosting work of the live demo site. Everyone wait and support.
